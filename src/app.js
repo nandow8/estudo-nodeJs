@@ -2,16 +2,16 @@
 
 const express = require('express');
 const app = express();
-  
+const bodyParser = require('body-parser');
 const router = express.Router();
 
-const route = router.get('/', (req, res, next) => {
-    res.status(200).send({
-        title: "node api",
-        version: "0.0.1"
-    });
-});
+const indexRoute = require('./routes/index-route');
+const productsRoute = require('./routes/products-route');
 
-app.use('/', route);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false })); 
+ 
+app.use('/', indexRoute);
+app.use('/products', productsRoute); 
 
 module.exports = app;
