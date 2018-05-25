@@ -1,5 +1,0 @@
-iniciando uma aplicação node:
-    npm init -y
-
-instalando pacotes node_modules(nunca enviar para o servidor, excluir antes)
-    npm install http express debug --save
