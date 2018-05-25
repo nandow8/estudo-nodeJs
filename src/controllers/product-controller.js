@@ -1,7 +1,21 @@
 'use strict';
 
+const mongoose = require('mongoose');
+const Product = mongoose.model('Product');
+
 exports.post = (req, res, next) => {
-    res.status(201).send(req.body);
+    var product = new Product(req.body);
+    //product.title = req.body.title;   posso passar um por um na hora de salvar
+    product
+       .save()
+       .then( x => {
+           res.status(201).send({ message: 'Produto salvo'});
+       }).catch( e => {
+           res.status(400).send({
+                message: 'Produto salvo',
+                data: e
+           });
+       });
 }
 
 exports.put = (req, res, next) => {
