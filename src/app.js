@@ -1,12 +1,13 @@
 'use strict'
 
 const express = require('express');
+const config = require('./config');
 const app = express();
 const bodyParser = require('body-parser');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://root:root@ds016058.mlab.com:16058/ndstrstr');
+mongoose.connect(config.connectionString);
 
 const Product = require('./models/product');
 const Customer = require('./models/customer');
