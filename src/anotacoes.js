@@ -22,3 +22,7 @@ instalando guid
         
         
     }
+
+
+criptografando senhas com md5
+        npm install md5 --save
