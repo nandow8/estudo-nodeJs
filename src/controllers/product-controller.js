@@ -86,5 +86,16 @@ exports.put = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    res.status(200).send(req.body); // req.body pega o corpo da requisição
+    Product
+        .findByIdAndRemove( req.params.id ) //ou posso passar body no lugar de params e nao excluir pela rota, mas pelo "post"
+        .then( x => {
+            res.status(200).send({
+                message: 'Produto removido com sucesso!'
+            });
+        }).catch( e => {
+            res.status(400).send({
+                message: 'Falha ao remover produto',
+                data: e
+            });
+        });
 };
