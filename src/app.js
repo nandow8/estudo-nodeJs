@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://root:root@ds016058.mlab.com:16058/ndstrstr');
 
 const Product = require('./models/product');
+const Customer = require('./models/customer');
 
 const indexRoute = require('./routes/index-route');
 const productsRoute = require('./routes/products-route');
