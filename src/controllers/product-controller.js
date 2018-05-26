@@ -13,6 +13,19 @@ exports.get = (req, res, next) => {
         });
 };
 
+exports.getBySlug = (req, res, next) => {
+    Product
+        .findOne({ //somente find eu trago um array, com find one eu trago corretamente pelo indice
+            slug: req.params.slug,
+            active:true
+        }, 'title description price slug tags')
+        .then(data => {
+            res.status(200).send(data);
+        }).catch( e => {
+            res.status(400).send(e);
+        });
+};
+
 exports.post = (req, res, next) => {
     var product = new Product(req.body);
     //product.title = req.body.title;   posso passar um por um na hora de salvar
