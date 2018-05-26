@@ -14,7 +14,7 @@ const schema = new Schema({
     },
     createDate: {
         type: Date,
-        required: true,
+        required: [true, 'informe a data'],
         default: Date.now
     },
     status: {
