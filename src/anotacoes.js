@@ -31,3 +31,9 @@ site para serviço de email https://app.sendgrid.com/settings/api_keys   25.000 
         chave: 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
     instalar sendgrid
         npm install sendgrid@2.0.0 --save
+
+para saber mais sobre imagens: 
+    ngImgCrop .. curso de front end dos caras
+
+instalando jwebtoken:
+    npm install jsonwebtoken@7.4.0 --save
