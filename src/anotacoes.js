@@ -37,3 +37,5 @@ para saber mais sobre imagens:
 
 instalando jwebtoken:
     npm install jsonwebtoken@7.4.0 --save
+
+no postman colocar x-access-token tipo o Bearer
