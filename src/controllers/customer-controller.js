@@ -24,7 +24,8 @@ exports.post = async(req, res, next) => {
             name: req.body.name,
             email: req.body.email,
             //password: md5(req.body.password) //hash de 35 caractere
-            password: md5(req.body.password + global.SALT_KEY) //combina com hash la do arquivo config.js
+            password: md5(req.body.password + global.SALT_KEY), //combina com hash la do arquivo config.js
+            roles: ["user"]
         }); 
 
         emailService.send(
@@ -62,14 +63,15 @@ exports.authenticate = async(req, res, next) => {
             id: customer._id,
             email: customer.email,
             name: customer.name,
-            roles: customer.roles
+            roles: customer.roles //verifica se é admin ou user
         });
 
         res.status(201).send({
             token: token,
             data: {
                 email: customer.email,
-                name: customer.name
+                name: customer.name,
+                roles: customer.roles
             }
         });
     } catch (e) {

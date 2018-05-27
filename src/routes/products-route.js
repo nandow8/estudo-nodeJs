@@ -10,9 +10,9 @@ router.get('/', authService.authorize, controller.get); //bloqueia o acesso para
 router.get('/:slug', controller.getBySlug);
 router.get('/admin/:id', controller.getById);
 router.get('/tags/:tag', controller.getByTag);
-router.post('/', authService.authorize, controller.post);
-router.put('/:id', controller.put); //put
-router.delete('/:id', controller.delete);
+router.post('/', authService.isAdmin, controller.post); // so pode acessar quem for Admin
+router.put('/:id', authService.isAdmin, controller.put); //put
+router.delete('/:id', authService.isAdmin, controller.delete);
  
 
 module.exports = router;

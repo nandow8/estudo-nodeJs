@@ -30,7 +30,7 @@ exports.authorize = function (req, res, next) {
     }
 };
 
-exports.isAdmin = function (req, res, next) {
+exports.isAdmin = function (req, res, next) { //verifica se é admin
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
     if (!token) {

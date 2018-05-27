@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -15,7 +15,13 @@ const schema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    roles: [{
+        type: String,
+        required: true,
+        enum: ['user', 'admin'],
+        default: 'user'
+    }]
 });
 
 module.exports = mongoose.model('Customer', schema);
