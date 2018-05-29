@@ -8,15 +8,13 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 mongoose.connect(config.connectionString);
+ 
+const Customer = require('./models/customer'); 
+const Contato = require('./models/contato'); 
 
-const Product = require('./models/product');
-const Customer = require('./models/customer');
-const Order = require('./models/order');
-
-const indexRoute = require('./routes/index-route');
-const productsRoute = require('./routes/products-route');
-const customerRoute = require('./routes/customer-route');
-const orderRoute = require('./routes/order-route');
+const indexRoute = require('./routes/index-route'); 
+const customerRoute = require('./routes/customer-route'); 
+const contatoRoute = require('./routes/contato-route'); 
 
 app.use(bodyParser.json({
     limit: '5mb' //tamanho do arquivo mandado para o servidor (aumentar caso tenha upload de imagem)
@@ -31,9 +29,8 @@ app.use(function (req, res, next) {
     next();
 });
  
-app.use('/', indexRoute);
-app.use('/products', productsRoute); 
-app.use('/customers', customerRoute); 
-app.use('/orders', orderRoute); 
+app.use('/', indexRoute); 
+app.use('/customers', customerRoute);  
+app.use('/contato', contatoRoute);  
 
 module.exports = app;

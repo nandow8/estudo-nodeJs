@@ -10,19 +10,12 @@ const schema = new Schema({
     },
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: true 
     },
-    password: {
+    message: {
         type: String,
         required: true
-    },
-    roles: [{
-        type: String,
-        required: true,
-        enum: ['user', 'admin'],
-        default: 'user'
-    }]
+    } 
 });
 
-module.exports = mongoose.model('Customer', schema);
+module.exports = mongoose.model('Contato', schema);

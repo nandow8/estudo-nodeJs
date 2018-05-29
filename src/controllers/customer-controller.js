@@ -40,7 +40,7 @@ exports.post = async(req, res, next) => {
         });
     } catch (e) {
         res.status(500).send({
-            message: 'Falha ao processar sua requisição'
+            message: 'Falha ao processar sua requisição' + e
         });
     }
 }
