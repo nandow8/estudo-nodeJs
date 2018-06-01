@@ -6,6 +6,16 @@ const md5 = require('md5');
 const emailService = require('../services/email-service');
 const authService = require('../services/auth-service');
 
+exports.get = (req, res, next) => { 
+    repository
+        .get()
+            .then(data => {
+                res.status(200).send(data);
+            }).catch( e => {
+                res.status(400).send(e);
+            });
+};
+
 exports.post = async(req, res, next) => {
     
     let contract = new ValidationContract();
