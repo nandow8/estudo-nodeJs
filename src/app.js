@@ -6,6 +6,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const router = express.Router();
 const mongoose = require('mongoose');
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 
 mongoose.connect(config.connectionString);
  
@@ -32,5 +34,21 @@ app.use(function (req, res, next) {
 app.use('/', indexRoute); 
 app.use('/customers', customerRoute);  
 app.use('/contato', contatoRoute);  
+
+
+app.get('/inicio', function(req, res){
+    res.sendFile(__dirname + '/inicio.html');
+});
+
+io.on('connection', function(socket){
+    socket.on('chat message', function(msg){
+      console.log('message: ' + msg);
+      io.emit('chat message', msg);
+    });
+  });
+
+http.listen(3100, function(){
+    console.log('listening on *:3100');
+});
 
 module.exports = app;
